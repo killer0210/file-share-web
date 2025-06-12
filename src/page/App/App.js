@@ -9,7 +9,7 @@ function App() {
   return (
     <div>
       <Header />
-      <main className='Content   justify-items-center bg-blue-50 h-screen-58 w-full  overflow-hidden p-2'>
+      <main className='Content flex  justify-center bg-blue-50 h-screen-58 w-full  overflow-hidden p-2' >
         <Routes>
           <Route path='/' element={<HomePage />} />
         </Routes>

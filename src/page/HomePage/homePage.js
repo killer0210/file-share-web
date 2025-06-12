@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../../index.css";
 import bcImage from '../../assets/istockphoto-1460638750-612x612.png'
 import UploadArea from "../../compunents/UploadArea";
+import FileDetails from "../../compunents/FileDetails";
 
 const HomePage = () => {
     const [files, setFiles] = useState([]);
@@ -21,11 +22,13 @@ const HomePage = () => {
     }
 
     return (
-        <div className="w-full max-w-2xl">
+        <div className="w-full max-w-2xl my-auto">
             <UploadArea
                 onFilesAdded={handleFilesAdded}
                 disabled={status === 'uploading'}
             />
+
+            <FileDetails />
         </div>
     )
 }
