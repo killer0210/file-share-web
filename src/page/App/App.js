@@ -7,9 +7,9 @@ import "../../index.css";
 
 function App() {
   return (
-    <div>
-      <Header />
-      <main className='Content justify-items-center bg-blue-50 h-screen-58 w-full  overflow-hidden p-2'>
+    <div className='min-h-screen bg-blue-50  flex flex-col '>
+      <Header  className=' mt-4 z-50'/>
+      <main className='Content flex  justify-items-center  items-center   h-screen-58  overflow-hidden p-2 min-h-screen '>
         <Routes>
           <Route path='/' element={<HomePage />} />
         </Routes>
