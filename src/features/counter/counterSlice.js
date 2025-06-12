@@ -1,21 +1,26 @@
-import { createSlice } from "@reduxjs/toolkit"; 
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     file: null,
     status: "idle"
-  };
+};
 
 export const counterSlice = createSlice({
-    name:'counter', 
+    name: 'counter',
     initialState,
-    reducers:{
+    reducers: {
         newFile: (state, action) => {
             state.file = action.payload;
-            console.log('Incoming parload:',action.payload );
+            console.log('Incoming parload:', action.payload);
             state.status = "uploading";
+        },
+        removeFile: (state) => {
+            state.file = null;
+            state.status = "idle";
+            console.log('Status display :', state.status);
         }
     },
 });
 
-export const { newFile } = counterSlice.actions;
+export const { newFile, removeFile } = counterSlice.actions;
 export default counterSlice.reducer;

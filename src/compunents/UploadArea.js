@@ -9,7 +9,8 @@ const UploadArea = () => {
 
     const onFileInputChange = useCallback((e) => {
         if (!e.target.files) return;
-        const files = Array.from(e.target.files);
+        // const files = e.target.files[0];
+         const files = Array.from(e.target.files);
         if (files.length > 0) {
             dispatch(newFile(files[0]));
             e.target.value = '';
