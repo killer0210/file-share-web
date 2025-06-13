@@ -12,6 +12,13 @@ module.exports = {
             }
         },
     },
+    theme: {
+        extend: {
+          minHeight: {
+            '80vh': '80vh',
+          }
+        }
+    },
     variants: {
         extend: {
             borderRadius: ['hover'],

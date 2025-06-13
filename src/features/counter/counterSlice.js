@@ -1,18 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    file: null,
-    status: "idle"
+    fileMeta: {
+        name: '',
+        size: 0,
+        type: '',
+    },
+    status: "idle",
+    error: null
+
 };
 
 export const counterSlice = createSlice({
     name: 'counter',
     initialState,
     reducers: {
-        newFile: (state, action) => {
-            state.file = action.payload;
-            console.log('Incoming parload:', action.payload);
+        uploadStart: (state) => {
             state.status = "uploading";
+            state.error = null;
+        },
+        uploadSuccess: (state, action) => {
+            const { name, size, type } = action.payload;
+
+            state.status = "success";
+            state.fileMeta = { name, size, type };
+            console.log("File succes", state.fileMeta);
+        },
+        uploadFailure: (state, action) => {
+            state.status = "error";
+            state.error = action.payload;
         },
         removeFile: (state) => {
             state.file = null;
@@ -22,5 +38,5 @@ export const counterSlice = createSlice({
     },
 });
 
-export const { newFile, removeFile } = counterSlice.actions;
+export const { uploadStart, uploadSuccess, uploadFailure, removeFile } = counterSlice.actions;
 export default counterSlice.reducer;

@@ -27,8 +27,10 @@ code {
 }
 
 .btn-hover {
-  @apply hover:bg-blue-700 hover:text-white hover:rounded-sm;
+  @apply hover:bg-blue-700 hover:text-white hover:rounded-sm ;
 }
 
 /*home page */
-.Content {}
+.Content {
+  
+}

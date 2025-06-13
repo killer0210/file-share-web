@@ -2,21 +2,21 @@ import React, { useState } from "react";
 import "../../index.css";
 import bcImage from '../../assets/istockphoto-1460638750-612x612.png'
 import UploadArea from "../../compunents/UploadArea";
-import FileDetails from "../../compunents/FileDetails";
+import FileItem from "../../compunents/FileItem";
+import { useDispatch, useSelector } from "react-redux";
 
 const HomePage = () => {
-    const handleFilesAdded = (files) => {
-        console.log('Files added:', files);
-    };
+
+    const status = useSelector((state) => state.counter.status);
+    const file = useSelector((state) => state.counter.file);
 
     return (
         <div className="container mx-auto justify-items-center ">
-            <div className="w-full max-w-2xl">
+            <div className="w-full max-w-2xl mx-auto">
                 <UploadArea
-                    onFilesAdded={handleFilesAdded}
                 />
+                {status === 'success' && <FileItem />}
 
-                <FileDetails />
             </div>
         </div>
     )
