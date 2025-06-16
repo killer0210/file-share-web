@@ -6,10 +6,13 @@ import AboutIcon from "../assets/information-circle-outline.svg";
 import AboutIconWh from "../assets/information-circle-outline-white.svg";
 import ProIcon from "../assets/person-circle-outline.svg";
 import ProIconWh from "../assets/person-circle-outline-white.svg";
+import RepeatIcon from "../assets/repeat-outline.svg";
+import RepeatIconWh from "../assets/repeat-outline-white.svg";
 import EnterIcon from "../assets/enter-outline.svg";
 import EnterIconWh from "../assets/enter-outline-white.svg";
 import PersonAddIcon from "../assets/person-add-outline.svg";
 import PersonAddIconWh from "../assets/person-add-outline-white.svg";
+
 
 const Header = () => {
     return (
@@ -30,6 +33,20 @@ const Header = () => {
                         className="w-6 h-6 absolute opacity-0 group-hover:opacity-100 transition duration-300"
                     />
                     </Link>
+                    </li>
+                <li className="group relative btn-hover p-2 rounded cursor-pointer w-10 h-10 flex items-center justify-center">
+                    <Link to="/transfer" className="w-full h-full flex items-center justify-center relative">
+                        <img
+                            src={RepeatIcon}
+                            alt="Upload"
+                            className="w-6 h-6 absolute  group-hover:opacity-0 transition duration-300"
+                        />
+                        <img
+                            src={RepeatIconWh}
+                            alt="Upload white"
+                            className="w-6 h-6 absolute opacity-0 group-hover:opacity-100 transition duration-300"
+                        />
+                        </Link>
                     </li>
                 <li className="group relative btn-hover p-2 rounded cursor-pointer w-10 h-10 flex items-center justify-center">
                     <Link to="/" className="w-full h-full flex items-center justify-center relative">
