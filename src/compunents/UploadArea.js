@@ -58,8 +58,8 @@ const UploadArea = () => {
                     <img src={FileIcon} alt="Upload" className="w-8 h-8" />
                 </div>
                 <div>
-                    <h2 className="text-xl text-gray-800 mb-2">Drag & Drop files here</h2>
-                    <p className="text-sm text-gray-500 mb-4">or</p>
+                <h2 className="hidden md:block text-xl text-gray-800 mb-2">Drag & Drop files here</h2>
+                <p className="hidden md:block text-sm text-gray-500 mb-4">or</p>
 
                     {status === "uploading" ? (
                         <div className="flex items-center justify-center">
