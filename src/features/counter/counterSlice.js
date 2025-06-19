@@ -31,7 +31,11 @@ export const counterSlice = createSlice({
             state.error = action.payload;
         },
         removeFile: (state) => {
-            state.file = null;
+            state.fileMeta = {
+                name: '',
+                size: 0,
+                type: '',
+            };
             state.status = "idle";
             console.log('Status display :', state.status);
         }

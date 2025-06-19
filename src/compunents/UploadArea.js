@@ -10,6 +10,11 @@ const UploadArea = () => {
     const dispatch = useDispatch();
     const status = useSelector((state) => state.counter.status);
     const maxFileSize = 2 * 1024 * 1024 * 1024;
+    const formatFileSize = (bytes) => {
+        if (bytes < 1024) return `${bytes} B`;
+        if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+        return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+    }
     
     const [selectedFile, setSelectedFile] = useState(null);
 
@@ -24,10 +29,11 @@ const UploadArea = () => {
                 return;
             }
             setSelectedFile(file);
+            console.log(file);
 
             const fileMeta = {
                 name: file.name,
-                size: file.size,
+                size: formatFileSize(file.size),
                 type: file.type,
             };
 
@@ -58,8 +64,8 @@ const UploadArea = () => {
                     <img src={FileIcon} alt="Upload" className="w-8 h-8" />
                 </div>
                 <div>
-                <h2 className="hidden md:block text-xl text-gray-800 mb-2">Drag & Drop files here</h2>
-                <p className="hidden md:block text-sm text-gray-500 mb-4">or</p>
+                <h2 className="hidden md:block text-xl text-gray-800 mb-2">Файлаа энд чирч оруулна уу</h2>
+                <p className="hidden md:block text-sm text-gray-500 mb-4">эсвэл</p>
 
                     {status === "uploading" ? (
                         <div className="flex items-center justify-center">
@@ -70,11 +76,11 @@ const UploadArea = () => {
                             htmlFor="fileInput"
                             className="inline-block px-6 py-3 bg-blue-600 text-white font-medium rounded-lg cursor-pointer hover:bg-blue-700 transition-colors duration-300 shadow-md hover:shadow-lg"
                         >
-                            Browse Files
+                            Файл Сонгох
                         </label>
                     )}
                 </div>
-                <p className="text-xs text-gray-400 mt-2">Maximum size: 2GB</p>
+                <p className="text-xs text-gray-400 mt-2">Файлын дээд хэмжээ: 2GB</p>
             </div>
 
            
