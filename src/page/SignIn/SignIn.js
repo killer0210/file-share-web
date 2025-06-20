@@ -3,7 +3,7 @@ import React from "react";
 const SignIn = () => {
   return (
     <div className="bg-white flex flex-col max-w-2xl rounded-lg ">
-    <div className="bg-white p-2 m-2  flex flex-col max-w-2xl items-center ">
+    <div className="bg-white p-4 m-2  flex flex-col max-w-2xl items-center gap-2">
       <h2 className="font-bold" >Welcome Back</h2>
       <p className="font-semibold" >Don't haven an yet? <a className="text-blue-600 cursor-pointer">Login</a></p>
       <input

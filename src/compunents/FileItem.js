@@ -3,7 +3,7 @@ import '../index.css';
 import FileIcon from "../assets/document-sharp-icon.png";
 import CancelIcon from "../assets/close-circle-icon.png";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFile } from "../features/counter/counterSlice";
+import { removeFile, continueSectionOn } from "../features/counter/counterSlice";
 import { useNavigate } from "react-router-dom";
 
 const FileItem = () => {
@@ -20,6 +20,7 @@ const FileItem = () => {
     const removeBtn = () => {
         dispatch(removeFile());
     };
+    
     const navigate = useNavigate();
 
     return (

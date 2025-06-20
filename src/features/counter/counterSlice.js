@@ -8,6 +8,7 @@ const initialState = {
     },
     status: "idle",
     error: null
+   
 
 };
 
@@ -38,9 +39,10 @@ export const counterSlice = createSlice({
             };
             state.status = "idle";
             console.log('Status display :', state.status);
-        }
+        },
+        
     },
 });
 
-export const { uploadStart, uploadSuccess, uploadFailure, removeFile } = counterSlice.actions;
+export const { uploadStart, uploadSuccess, uploadFailure, removeFile,continueSectionOn } = counterSlice.actions;
 export default counterSlice.reducer;
