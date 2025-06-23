@@ -35,6 +35,7 @@ const UploadArea = () => {
                 name: file.name,
                 size: formatFileSize(file.size),
                 type: file.type,
+                timestamp: Date.now()
             };
 
             dispatch(uploadSuccess(fileMeta));

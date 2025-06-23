@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TransferFileItem from "../../compunents/TransferFileItem";
 import UploadArea from "../../compunents/UploadArea";
 import { useNavigate } from "react-router-dom";
 import SentTransfer from "../../compunents/sentTransfer";
 import ReceivedTransfer from "../../compunents/ReceivedTransfer";
+import axios from "../../axios-order";
 
 const Transfer = () => {
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState("sent");
+  
 
     return (
         <div className="flex w-full h-full">
