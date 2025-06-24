@@ -1,21 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import '../index.css';
 import FileIcon from "../assets/document-sharp-icon.png";
 import CancelIcon from "../assets/close-circle-icon.png";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFile, continueSectionOn } from "../features/counter/counterSlice";
+import { removeFile,  GetOrder } from "../features/counter/counterSlice";
 import { useNavigate } from "react-router-dom";
 
+
 const FileItem = () => {
-    const file = useSelector((state) => state.counter.fileMeta);
     const dispatch = useDispatch();
+
+
+    const file = useSelector((state) => state.counter.fileMeta);
     const status = useSelector((state) => state.counter.status);
 
-    // const formatFileSize = (bytes) => {
-    //     if (bytes < 1024) return `${bytes} B`;
-    //     if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-    //     return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
-    // }
+   
 
     const removeBtn = () => {
         dispatch(removeFile());

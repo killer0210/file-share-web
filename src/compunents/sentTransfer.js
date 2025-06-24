@@ -1,15 +1,29 @@
 import react from "react";
 import TransferFileItem from "./TransferFileItem";
+import { saveOrder } from "../features/counter/counterSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const SentTransfer = () =>{
+    const order = useSelector((state) => state.counter.orders);
+    const myEmail = "saihants1@gmail.com";
+    const sent = (order || []).filter(order => order.from === myEmail);
+    
     return (
         <div>
-            <div className="mb-4 text-gray-500 text-sm">
-                May 30
-            </div>
-            <TransferFileItem fileName="Name" date="12 may 2025" size="11.3KB (1 file)" status="Not yet downloaded -Expired" />
-            <TransferFileItem fileName="Name" date="12 may 2025" size="11.3KB (1 file)" status="Not yet downloaded -Expired" />
-            <TransferFileItem fileName="Name" date="12 may 2025" size="11.3KB (1 file)" status="Not yet downloaded -Expired" />
+            {sent.map((order, i) => {
+                const date = new Date(order.file?.timestamp);
+                const formattedDate = date.toLocaleString();
+
+                return (
+                    <TransferFileItem
+                        key={i}
+                        fileName={order.title}
+                        date={formattedDate}
+                        size={order.file?.size}
+                        status={order.file?.type}
+                    />
+                );
+            })}
         </div>
     );
 }

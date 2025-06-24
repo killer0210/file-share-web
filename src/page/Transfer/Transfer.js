@@ -5,15 +5,29 @@ import { useNavigate } from "react-router-dom";
 import SentTransfer from "../../compunents/sentTransfer";
 import ReceivedTransfer from "../../compunents/ReceivedTransfer";
 import axios from "../../axios-order";
+import {  GetOrder } from "../../features/counter/counterSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Transfer = () => {
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState("sent");
+    const dispatch = useDispatch();
   
+    useEffect(() => {
+        dispatch(GetOrder()).then((action) => {
+            const el = action.payload;
+            //  if(el){
+            //      console.log("Fetch Orders:", el[0][1])
+            // }
+            el.forEach((item, i) => {
+                console.log(`Order ${i + 1}:`, item[1]);
+            });
+        })
+   }, [dispatch])
 
     return (
-        <div className="flex w-full h-full">
-            <div onClick={() => navigate('/')}  className="hidden md:block w-1/3 h-full bg-blue-200 z-40 flex flex-col items-center justify-center pt-20">
+        <div className="flex w-full h-screen">
+            <div onClick={() => navigate('/')}  className="hidden md:block w-1/3 h-full bg-blue-200 z-40 flex flex-col items-center justify-center pt-20 h-full">
                 <h1 className="text-gray-800 text-7xl font-bold tracking-tight text-center leading-tight">Send To <br/>Files</h1>
                 <div className="mt-10 w-4/5  mx-auto">
                     <UploadArea />

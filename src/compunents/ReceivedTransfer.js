@@ -1,11 +1,28 @@
 import react from "react";
 import TransferFileItem from "./TransferFileItem";
+import { useSelector } from "react-redux";
 
 const ReceivedTransfer = () =>{
+
+    const order = useSelector((state) => state.counter.orders);
+    const toEmail = "saihants1@gmail.com";
+    const sent = (order || []).filter(order => order.to === toEmail);
+
     return( <div>
-        <TransferFileItem fileName="Name" date="12 may 2025" size="11.3KB (1 file)" status="Not yet downloaded -Expired" />
-            <TransferFileItem fileName="Name" date="12 may 2025" size="11.3KB (1 file)" status="Not yet downloaded -Expired" />
-            <TransferFileItem fileName="Name" date="12 may 2025" size="11.3KB (1 file)" status="Not yet downloaded -Expired" />
+         {sent.map((order, i) => {
+                const date = new Date(order.file?.timestamp);
+                const formattedDate = date.toLocaleString();
+
+                return (
+                    <TransferFileItem
+                        key={i}
+                        fileName={order.title}
+                        date={formattedDate}
+                        size={order.file?.size}
+                        status={order.file?.type}
+                    />
+                );
+            })}
     </div>);
 }
 

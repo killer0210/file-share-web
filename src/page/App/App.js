@@ -7,6 +7,7 @@ import Login from '../Login/Login.js';
 import SignIn from '../SignIn/SignIn.js'; 
 import Transfer from '../Transfer/Transfer.js';
 import FileUpload from "../fileUpload/fileUpload.js"
+import Profile from "../ProFile/proFile.js"
 
 import "../../index.css";
 
@@ -17,6 +18,7 @@ function App() {
     <main className="flex-1 flex flex-col items-center justify-center">
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/transfer" element={<Transfer />} />
         <Route path="/fileUpload" element={<FileUpload />} />

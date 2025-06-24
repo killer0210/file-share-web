@@ -40,7 +40,10 @@ const initialState = {
         saving: false,
         finished: false,
         error:null
-    }
+    },
+    orders:[],
+    loadingOrders: false,
+    ordersError:null,
 
 };
 
@@ -90,7 +93,22 @@ export const counterSlice = createSlice({
                 state.newOrder.saving = false;
                 state.newOrder.finished = true;
                 state.newOrder.error = action.error.message;
-            });
+            })
+            .addCase(GetOrder.pending, (state) => {
+                state.loadingOrders = true;
+                state.ordersError = null;
+              })
+            .addCase(GetOrder.fulfilled, (state, action) => {
+                state.loadingOrders = false;
+                state.orders = action.payload.map(([id,order])=> ({
+                    id,
+                    ...order
+                }));
+              })
+            .addCase(GetOrder.rejected, (state, action) => {
+                state.loadingOrders = false;
+                state.ordersError = action.error.message;
+              });
     }
 });
 

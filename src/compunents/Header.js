@@ -49,7 +49,7 @@ const Header = () => {
                         </Link>
                     </li>
                 <li className="group relative btn-hover p-2 rounded cursor-pointer w-10 h-10 flex items-center justify-center">
-                    <Link to="/" className="w-full h-full flex items-center justify-center relative">
+                    <Link to="/profile" className="w-full h-full flex items-center justify-center relative">
                         <img
                             src={ProIcon}
                             alt="Upload"
