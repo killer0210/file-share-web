@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { saveOrder } from "../../features/counter/counterSlice";
 import { useNavigate } from "react-router-dom";
+import axios from "../../axios-order";
 
 const FileUpload = () => {
     const file = useSelector((state) => state.counter.fileMeta);
@@ -16,6 +17,8 @@ const FileUpload = () => {
 
     const parts = file.name.split('.');
     const extension = parts.length > 1 ? parts.pop() : null;
+    
+
 
     useEffect(() => {
         if (finished && !error) {
@@ -32,6 +35,20 @@ const FileUpload = () => {
             message,
           };
         dispatch(saveOrder(order));
+    };
+    const handleSubmit = async () => {
+        const formData = new FormData();
+        formData.append("file",selectedFile);
+        formData.append("recipientEmail",email);
+
+        try {
+            const response = await axios.post("/upload", formData, {
+                headers: { "Content-Type": "multipart/from-data"},
+            });
+            console.log("File uploaded", response.data);
+        }catch (err){
+            console.error("Upload failed", err)
+        }
     };
 
     return (
