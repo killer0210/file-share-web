@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 import AboutIcon from "../assets/information-circle-outline.svg";
 import AboutIconWh from "../assets/information-circle-outline-white.svg";
+import HomeIcon from "../assets/home-outline.svg";
+import HomeIconWh from "../assets/home-outline-white.svg";
 import ProIcon from "../assets/person-circle-outline.svg";
 import ProIconWh from "../assets/person-circle-outline-white.svg";
 import RepeatIcon from "../assets/repeat-outline.svg";
@@ -29,6 +31,20 @@ const Header = () => {
                     />
                     <img
                         src={AboutIconWh}
+                        alt="Upload White"
+                        className="w-6 h-6 absolute opacity-0 group-hover:opacity-100 transition duration-300"
+                    />
+                    </Link>
+                    </li>
+                <li className="group btn-hover p-2 rounded cursor-pointer w-10 h-10 flex items-center justify-center relative">
+                    <Link to="/" className="w-full h-full flex items-center justify-center relative">
+                    <img
+                        src={HomeIcon}
+                        alt="Upload"
+                        className="w-6 h-6 absolute  group-hover:opacity-0 transition duration-300"
+                    />
+                    <img
+                        src={HomeIconWh}
                         alt="Upload White"
                         className="w-6 h-6 absolute opacity-0 group-hover:opacity-100 transition duration-300"
                     />

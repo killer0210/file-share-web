@@ -23,13 +23,35 @@ const FileUpload = () => {
         }
     }, [finished, error, navigate]);
 
+    const generateUUID = () => {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            const r = Math.random() * 16 | 0;
+            const v = c === 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    };
+
     const handleSend = () =>{
+
+        const parts = file.name.split('.');
+        const ext = parts.length > 1 ? parts.pop() : "";
+
+        const token = generateUUID();
+        const saved_name = `${token}.${ext}`;
+
         const order = {
-            file,
+            file: {
+                ...file,
+                saved_name,
+                token,
+                download_url:`http://localhost:3000/transfer/${saved_name}`,
+            },
             to: recipientEmail,
             from: senderEmail,
             title,
             message,
+            created_at: Date.now(),
+            expires_at: Date.now() + 7 * 24 * 60 * 60 * 100,
           };
         dispatch(saveOrder(order));
     };

@@ -33,7 +33,7 @@ const Transfer = () => {
                     <UploadArea />
                 </div>
             </div>
-            <div className="w-2/3 h-screen z-60 bg-white p-6">
+            <div className="w-full md:w-2/3  h-screen z-60 bg-white p-6">
                 {/* <div className="flex justify-end">
                     <button className="text-gray-500 hover:text-gray-700">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

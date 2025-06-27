@@ -11,7 +11,7 @@ const SentTransfer = () =>{
     return (
         <div>
             {sent.map((order, i) => {
-                const date = new Date(order.file?.timestamp);
+                const date = new Date(order.created_at);
                 const formattedDate = date.toLocaleString();
 
                 return (
@@ -21,6 +21,7 @@ const SentTransfer = () =>{
                         date={formattedDate}
                         size={order.file?.size}
                         status={order.file?.type}
+                        downLink={order.file?.download_url}
                     />
                 );
             })}
