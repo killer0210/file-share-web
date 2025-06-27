@@ -25,35 +25,35 @@ const TransferFileItem = ({ fileName, date, size, status,downLink  }) => {
             </div>
             <ul className="flex items-center font-medium gap-2 ">
             <li onClick={handleCopy} className="group btn-hover p-2 rounded-md cursor-pointer  flex items-center justify-center relative">
-            <div className="w-6 h-6 flex items-center justify-center relative">
+            <div className="hidden md:block w-6 h-6 flex items-center justify-center relative">
                     <img
                         src={LinkIcon}
                         alt="link copy"
-                        className="hidden md:block w-6 h-6 absolute  group-hover:opacity-0 transition duration-300"
+                        className=" w-6 h-6 absolute  group-hover:opacity-0 transition duration-300"
                     />
                     <img
                         src={LinkIconWh}
                         alt="link copy"
-                        className="hidden md:block w-6 h-6 absolute opacity-0 group-hover:opacity-100 transition duration-300"
+                        className=" w-6 h-6 absolute opacity-0 group-hover:opacity-100 transition duration-300"
                     />
                     </div>
-                    <span className="block max-w-[150px]  md:hidden  ">Линк хуулах</span>
+                    <span className="block  text-center  md:hidden x-auto ">Линк хуулах</span>
                     </li>
             <li className="group btn-hover p-2 rounded-md cursor-pointer  flex items-center justify-center relative">
                     <a href={downLink} download className="w-full h-full flex  items-center justify-center relative">
-                    <div className="w-6 h-6 flex items-center justify-center relative">
+                    <div className="hidden md:block w-6 h-6 flex items-center justify-center relative">
                     <img
                         src={DownIcon}
                         alt="download"
-                        className="hidden md:block  w-6 h-6 absolute  group-hover:opacity-0 transition duration-300"
+                        className=" w-6 h-6 absolute  group-hover:opacity-0 transition duration-300"
                     />
                     <img
                         src={DownIconWh} 
                         alt="download"
-                        className="hidden md:block w-6 h-6 absolute opacity-0 group-hover:opacity-100 transition duration-300"
+                        className=" w-6 h-6 absolute opacity-0 group-hover:opacity-100 transition duration-300"
                     />
                     </div>
-                    <span className="block md:hidden ">Татах</span>
+                    <span className="block md:hidden text-center">Татах</span>
                     </a>
                     </li>
             </ul>

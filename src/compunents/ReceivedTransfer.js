@@ -20,6 +20,7 @@ const ReceivedTransfer = () =>{
                         date={formattedDate}
                         size={order.file?.size}
                         status={order.file?.type}
+                        downLink={order.file?.download_url}
                     />
                 );
             })}

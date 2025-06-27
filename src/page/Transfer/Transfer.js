@@ -19,11 +19,17 @@ const Transfer = () => {
             //  if(el){
             //      console.log("Fetch Orders:", el[0][1])
             // }
-            el.forEach((item, i) => {
-                console.log(`Order ${i + 1}:`, item[1]);
-            });
+            if (Array.isArray(el)) {
+                el.forEach((item, i) => {
+                    console.log(`Order ${i + 1}:`, item[1]);
+                });
+            }
         })
    }, [dispatch])
+
+    const handleTabClick = (tab) => {
+        setActiveTab(tab);
+    }
 
     return (
         <div className="flex w-full h-screen">
@@ -42,14 +48,14 @@ const Transfer = () => {
                     </button>
                 </div> */}
                 <div className="flex justify-start mb-4 gap-2">
-                    <button onClick={()  => setActiveTab("sent")} 
+                    <button onClick={()  => handleTabClick("sent")} 
                         className={`px-4 py-2 border-b-2 transparent font-medium ${  
                             activeTab === "sent"
                                 ? "border-blue-600 text-blue-700"
                                 : "border-transparent text-gray-500 hover:border-blue-600 hover:text-blue-600" }`} >
                         Sent
                     </button>
-                    <button onClick={() => setActiveTab("received")}
+                    <button onClick={() => handleTabClick("received")}
                         className={`px-4 py-2 font-medium border-b-2 transition 
                                 ${
                                     activeTab === "received"

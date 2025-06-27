@@ -12,7 +12,7 @@ export const GetOrder = createAsyncThunk(
     'counter/getOrder',
     async (orderData) => {
         const response = await axios.get("/orders.json");
-        const arr = Object.entries(response.data);
+        const arr = Object.entries(response.data || {});
         return arr;  
     }
 );
