@@ -31,7 +31,6 @@ const initialState = {
         name: '',
         size: 0,
         type: '',
-        timestamp:'',
     },
     status: "idle",
     error: null,
@@ -56,10 +55,10 @@ export const counterSlice = createSlice({
             state.error = null;
         },
         uploadSuccess: (state, action) => {
-            const { name, size, type,timestamp } = action.payload;
+            const { name, size, type } = action.payload;
 
             state.status = "success";
-            state.fileMeta = { name, size, type, timestamp };
+            state.fileMeta = { name, size, type};
             console.log("File succes", state.fileMeta);
         },
         uploadFailure: (state, action) => {
