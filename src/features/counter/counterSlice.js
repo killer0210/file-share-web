@@ -16,6 +16,37 @@ export const GetOrder = createAsyncThunk(
         return arr;  
     }
 );
+export const signUp = createAsyncThunk(
+    'auth/signUp',
+    async ({ email, password }) => {
+      const response = await axios.post(
+        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDjdYBye_LuZ6Ft6QPsDWiZvwfJ6-JaZZo`,
+        {
+          email,
+          password,
+          returnSecureToken: true
+        }
+      );
+      console.log(" response" , response.data);
+      return response.data; // accessToken, refreshToken, userId гэх мэт
+    }
+  );
+export const logIn = createAsyncThunk(
+    'auth/signUp',
+    async ({ email, password }) => {
+      const response = await axios.post(
+        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDjdYBye_LuZ6Ft6QPsDWiZvwfJ6-JaZZo`,
+        {
+          email,
+          password,
+          returnSecureToken: true
+        }
+      );
+      console.log(" response" , response.data);
+      return response.data; // accessToken, refreshToken, userId гэх мэт
+    }
+  );
+  
 
 // useEffect(() => {
 //     axios.get("/orders.json").then(response => {
@@ -43,6 +74,13 @@ const initialState = {
     orders:[],
     loadingOrders: false,
     ordersError:null,
+    auth: {
+        user: null,
+        token: null,
+        uid: null,
+        loading: false,
+        error: null,
+      },
 
 };
 
@@ -107,7 +145,37 @@ export const counterSlice = createSlice({
             .addCase(GetOrder.rejected, (state, action) => {
                 state.loadingOrders = false;
                 state.ordersError = action.error.message;
-              });
+              })
+            .addCase(signUp.pending, (state) => {
+                state.auth.loading = true;
+                state.auth.error = null;
+            })
+            .addCase(signUp.fulfilled, (state, action) => {
+                state.auth.loading = false;
+                state.auth.user = action.payload.email;
+                state.auth.token = action.payload.idToken;
+                state.auth.uid = action.payload.localId;
+
+            })
+            .addCase(signUp.rejected, (state, action) => {
+                state.auth.loading = false;
+                state.auth.error = action.error.message;
+            })
+            .addCase(logIn.pending, (state) => {
+                state.auth.loading = true;
+                state.auth.error = null;
+            })
+            .addCase(logIn.fulfilled, (state, action) => {
+                state.auth.loading = false;
+                state.auth.user = action.payload.email;
+                state.auth.token = action.payload.idToken;
+                state.auth.uid = action.payload.localId;
+
+            })
+            .addCase(login.rejected, (state, action) => {
+                state.auth.loading = false;
+                state.auth.error = action.error.message;
+            });
     }
 });
 
