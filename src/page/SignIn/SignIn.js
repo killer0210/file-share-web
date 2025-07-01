@@ -31,8 +31,16 @@ const SignIn = () => {
   return (
     <div className="bg-white flex flex-col max-w-2xl rounded-lg ">
       <div className="bg-white p-4 m-2  flex flex-col max-w-2xl items-center text-center gap-2">
-        <h2 className="font-bold" >Welcome Back</h2>
-        <p className="font-semibold" >Don't haven an yet? <a href="#" className="text-blue-600 cursor-pointer">Login</a></p>
+        <h2 className="font-bold" >Тавтай морилно уу</h2>
+        <p className="font-semibold">
+        Бүртгэлтэй юу?{" "}
+      <a
+        onClick={() => navigate("/login")}
+        className="text-blue-600 cursor-pointer hover:underline"
+      >
+        Нэвтрэх
+      </a>
+    </p>
         <input
               type="email"
               placeholder="email address"

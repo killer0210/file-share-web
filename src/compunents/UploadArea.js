@@ -9,6 +9,9 @@ import { uploadStart, uploadSuccess, uploadFailure } from "../features/counter/c
 const UploadArea = () => {
     const dispatch = useDispatch();
     const status = useSelector((state) => state.counter.status);
+
+
+
     const maxFileSize = 2 * 1024 * 1024 * 1024;
     const formatFileSize = (bytes) => {
         if (bytes < 1024) return `${bytes} B`;
@@ -37,7 +40,7 @@ const UploadArea = () => {
                 type: file.type,
                 
             };
-
+          
             dispatch(uploadSuccess(fileMeta));
         } catch (err) {
             dispatch(uploadFailure("Файл оруулахад алдаа гарлаа."));

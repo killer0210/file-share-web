@@ -5,7 +5,8 @@ import { useSelector } from "react-redux";
 const ReceivedTransfer = () =>{
 
     const order = useSelector((state) => state.counter.orders);
-    const toEmail = "saihants1@gmail.com";
+    // const toEmail = "saihants1@gmail.com";
+    const toEmail = useSelector((state) => state.counter.auth.user);
     const sent = (order || []).filter(order => order.to === toEmail);
 
     return( <div>

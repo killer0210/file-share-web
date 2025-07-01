@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 const SentTransfer = () =>{
     const order = useSelector((state) => state.counter.orders);
-    const myEmail = "saihants1@gmail.com";
+    const myEmail = useSelector((state) => state.counter.auth.user);
+    // const myEmail = "saihants1@gmail.com";
     const sent = (order || []).filter(order => order.from === myEmail);
     
     return (

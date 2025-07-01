@@ -32,10 +32,10 @@ export const signUp = createAsyncThunk(
     }
   );
 export const logIn = createAsyncThunk(
-    'auth/signUp',
+    'auth/logIn',
     async ({ email, password }) => {
       const response = await axios.post(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDjdYBye_LuZ6Ft6QPsDWiZvwfJ6-JaZZo`,
+        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDjdYBye_LuZ6Ft6QPsDWiZvwfJ6-JaZZo`,
         {
           email,
           password,
@@ -113,6 +113,13 @@ export const counterSlice = createSlice({
             state.status = "idle";
             console.log('Status display :', state.status);
         },
+        logOut: (state) => {
+            state.auth.user = null;
+            state.auth.token = null;
+            state.auth.uid = null;
+            state.auth.error = null;
+            state.auth.loading = false;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -168,11 +175,9 @@ export const counterSlice = createSlice({
             .addCase(logIn.fulfilled, (state, action) => {
                 state.auth.loading = false;
                 state.auth.user = action.payload.email;
-                state.auth.token = action.payload.idToken;
                 state.auth.uid = action.payload.localId;
-
             })
-            .addCase(login.rejected, (state, action) => {
+            .addCase(logIn.rejected, (state, action) => {
                 state.auth.loading = false;
                 state.auth.error = action.error.message;
             });
@@ -185,5 +190,6 @@ export const {
     uploadFailure, 
     removeFile,
     continueSectionOn,
+    logOut,
 } = counterSlice.actions;
 export default counterSlice.reducer;

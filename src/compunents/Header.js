@@ -1,6 +1,7 @@
 import React from "react";
 import "../index.css";
 import { Link } from "react-router-dom";
+import {  useSelector } from "react-redux";
 
 import AboutIcon from "../assets/information-circle-outline.svg";
 import AboutIconWh from "../assets/information-circle-outline-white.svg";
@@ -17,11 +18,13 @@ import PersonAddIconWh from "../assets/person-add-outline-white.svg";
 
 
 const Header = () => {
+    const userId = useSelector((state) => state.counter.auth.uid)
     return (
         <header className="PrText py-4 px-4  bg-blue-50 ">
             <div className="max-w-7xl flex place-content-between items-center mx-auto">
                 <h1 className="font-bold text-2xl font-medium">FileShare</h1>
                 <ul className="flex items-center font-medium gap-2 ">
+                    
                 <li className="group btn-hover p-2 rounded cursor-pointer w-10 h-10 flex items-center justify-center relative">
                     <Link to="/help" className="w-full h-full flex items-center justify-center relative">
                     <img
@@ -36,7 +39,7 @@ const Header = () => {
                     />
                     </Link>
                     </li>
-                <li className="group btn-hover p-2 rounded cursor-pointer w-10 h-10 flex items-center justify-center relative">
+                    {userId ? <><li className="group btn-hover p-2 rounded cursor-pointer w-10 h-10 flex items-center justify-center relative">
                     <Link to="/" className="w-full h-full flex items-center justify-center relative">
                     <img
                         src={HomeIcon}
@@ -77,8 +80,7 @@ const Header = () => {
                             className="w-6 h-6 absolute opacity-0 group-hover:opacity-100 transition duration-300"
                         />
                         </Link>
-                    </li>
-                <li className="group relative btn-hover p-2 rounded cursor-pointer w-10 h-10 flex items-center justify-center">
+                    </li></> : <><li className="group relative btn-hover p-2 rounded cursor-pointer w-10 h-10 flex items-center justify-center">
                     <Link to="/login" className="w-full h-full flex items-center justify-center relative">
                         <img
                             src={EnterIcon}
@@ -105,11 +107,14 @@ const Header = () => {
                             className="w-6 h-6 absolute opacity-0 group-hover:opacity-100 transition duration-300"
                         />
                         </Link>
-                    </li>
+                    </li></>}
+                
+                    
+
                 </ul>
             </div>
         </header>
     )
 }
 
-export default Header;
+export default Header; 

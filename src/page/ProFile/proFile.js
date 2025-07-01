@@ -1,9 +1,20 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { logOut } from "../../features/counter/counterSlice";
+import { useNavigate } from "react-router-dom";
+import {  useSelector } from "react-redux";
 
 const Profile = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
+    const userGmail = useSelector((state) => state.counter.auth.user);
     const handleSave = () => {
         console.log("Шинэ нууц үг: 12325" );
+    }
+    const handleLogOut = () => {
+        dispatch(logOut());
+        navigate("/");
     }
 
     return(
@@ -13,9 +24,9 @@ const Profile = () => {
                 <label className="block text-md text-gray-600 mb-1">Gmail</label>
                 <input 
                     type="email"
-                    placeholder="you@examply.com"
+                    placeholder={userGmail}
                     readOnly
-                    className="max-w-64 border-b-2 p-2 rounded focus:outline-none focus:ring focus:border-blue-400"
+                    className="max-w-64 border-b-2 p-2 rounded focus:outline-none focus:ring focus:border-blue-400 placeholder-gray-900"
                     />
             </div>
             <div>
@@ -27,7 +38,10 @@ const Profile = () => {
                     />
             </div>
             <div>
-                <button onClick={handleSave} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-600 transition">Save</button>
+                <button onClick={handleSave} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-600 transition">Хадгалах</button>
+            </div>
+            <div className="flex justify-end">
+                <button onClick={handleLogOut} className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-600 transition">Гарах</button>
             </div>
         </div>
         
