@@ -47,7 +47,7 @@ const FileUpload = () => {
                 download_url:`http://localhost:3000/transfer/${saved_name}`,
             },
             to: recipientEmail,
-            from: senderEmail,
+            from: userGmail,
             title,
             message,
             created_at: Date.now(),
@@ -55,6 +55,8 @@ const FileUpload = () => {
           };
         dispatch(saveOrder(order));
     };
+
+    const userGmail = useSelector((state) => state.counter.auth.user);
 
     return (
         <div className="p-4">
@@ -65,7 +67,7 @@ const FileUpload = () => {
             </div>
             <input type="email" placeholder="Хүлээн авах имэйл" className="w-64 border-b-2 border-gray-500 p-2 hover:border-blue-600 focus:placeholder-transparent placeholder-gray-500 focus:outline-none" value={recipientEmail} onChange={e => setRecipientEmail(e.target.value)}/>
             
-            <input type="email" placeholder="Таны имэйл" className="w-64 border-b-2 border-gray-500 p-2 hover:border-blue-600 focus:placeholder-transparent placeholder-gray-500 focus:outline-none" value={senderEmail} onChange={e => setSenderEmail(e.target.value)}/>
+            <input type="email" placeholder={userGmail} readOnly className="w-64 border-b-2 border-gray-500 p-2 hover:border-blue-600 focus:placeholder-transparent placeholder-gray-500 focus:outline-none" value={senderEmail} onChange={e => setSenderEmail(e.target.value)}/>
             <input type="text" placeholder="Гарчиг" className="w-64 border-b-2 border-gray-500 p-2 hover:border-blue-600 focus:placeholder-transparent placeholder-gray-500 focus:outline-none" value={title} onChange={e => setTitle(e.target.value)}/>
             <input type="text" placeholder="Зурвас" className="w-64 border-b-2 border-gray-500 p-2 hover:border-blue-600 focus:placeholder-transparent placeholder-gray-500 focus:outline-none mb-2" value={message} onChange={e => setMessage(e.target.value)}/>
             {saving && <p>Илгээж байна...</p>}
