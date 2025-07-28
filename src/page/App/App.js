@@ -20,7 +20,8 @@ function App() {
     <main className="flex-1 flex flex-col items-center justify-center">
       <Routes>{userId ? <><Route path="/profile" element={<Profile />} />
       <Route path="/transfer" element={<Transfer />} />
-      <Route path="/fileUpload" element={<FileUpload />} /></> :<><Route path="/login" element={<Login />} />
+      <Route path="/fileUpload" element={<FileUpload />} />
+      <Route path="/" element={<HomePage />} /></> :<><Route path="/login" element={<Login />} />
         
         <Route path="/signIn" element={<SignIn />} />
        

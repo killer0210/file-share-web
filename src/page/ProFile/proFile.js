@@ -15,6 +15,7 @@ const Profile = () => {
     const handleLogOut = () => {
         dispatch(logOut());
         navigate("/");
+        
     }
 
     return(
